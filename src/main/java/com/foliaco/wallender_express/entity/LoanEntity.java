@@ -23,6 +23,9 @@ public class LoanEntity {
     @Column(name = "tasa_interes", nullable = false)
     private double interestRate;
 
+    @Column(name = "descripcion", nullable = false)
+    private String description;
+
     @Column(name = "saldo_pendiente", nullable = false)
     private BigDecimal outstandingBalance;
 
