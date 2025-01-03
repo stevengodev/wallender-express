@@ -46,10 +46,10 @@ public class LoanEntity {
 
     @ManyToOne
     @JoinColumn(name = "prestatario_id", referencedColumnName = "id", nullable = false)
-    private UserEntity borrowerId;
+    private UserEntity borrower;
 
     @ManyToOne
     @JoinColumn(name = "prestamista_id", referencedColumnName = "id", nullable = false)
-    private UserEntity lenderId;
+    private UserEntity lender;
 
 }

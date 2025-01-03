@@ -44,7 +44,7 @@ public class UserEntity {
     private String photo;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "direccion_id", referencedColumnName = "id",nullable = false)
+    @JoinColumn(name = "direccion_id", referencedColumnName = "id", nullable = false)
     private AddressEntity addressEntity;
 
 }
