@@ -20,7 +20,7 @@ public interface IAddressService {
      * @param id
      * @param addressDto
      */
-    Optional<AddressDto> updateAddress(Integer id, AddressDto addressDto);
+    AddressDto updateAddress(Integer id, AddressDto addressDto);
 
     /**
      * Obtiene una direccion por id
@@ -28,13 +28,13 @@ public interface IAddressService {
      * @param id
      * @return Direccion
      */
-    AddressDto getAddressById(Integer id);
+    Optional<AddressDto> getAddressById(Integer id);
 
     /**
      * Elimina una direccion por id
      *
      * @param id
      */
-    void deleteAddressById(Integer id);
+    boolean deleteAddressById(Integer id);
 
 }

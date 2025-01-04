@@ -1,4 +1,8 @@
 package com.foliaco.wallender_express.dto;
 
-public record AddressDto(String country, String city, String neighborhood) {
+import jakarta.validation.constraints.NotBlank;
+
+public record AddressDto(@NotBlank String country,
+                         @NotBlank String city,
+                         @NotBlank String neighborhood) {
 }

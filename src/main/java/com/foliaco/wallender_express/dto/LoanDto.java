@@ -1,17 +1,21 @@
 package com.foliaco.wallender_express.dto;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public record LoanDto(BigDecimal amount,
+public record LoanDto( BigDecimal amount,
                       double interestRate,
-                      String description,
-                      BigDecimal outstandingBalance,
-                      String rateFrequency,
-                      LocalDate startDate,
-                      LocalDate endDate,
+                      @NotBlank String description,
+                      @DecimalMin("0.01") BigDecimal outstandingBalance,
+                      @NotBlank String rateFrequency,
+                      @NotNull LocalDate startDate,
+                      @NotNull LocalDate endDate,
                       boolean isPaid,
-                      String agreementDocumentPath,
+                      @NotBlank String agreementDocumentPath,
                       int borrowerId,
                       int lenderId) {
 }
