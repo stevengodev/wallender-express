@@ -6,12 +6,16 @@ import com.foliaco.wallender_express.exception.NotFoundException;
 import com.foliaco.wallender_express.repository.IAddressRepository;
 import com.foliaco.wallender_express.service.IAddressService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @AllArgsConstructor
+@Service
+@Slf4j
 public class IAddressServiceImpl implements IAddressService {
 
     private ModelMapper modelMapper;
@@ -34,9 +38,9 @@ public class IAddressServiceImpl implements IAddressService {
                 () -> new NotFoundException("Address not found")
         );
 
-        addressEntity.setCity(addressDto.city());
-        addressEntity.setNeighborhood(addressDto.neighborhood());
-        addressEntity.setCountry(addressDto.country());
+        addressEntity.setCity(addressDto.getCity());
+        addressEntity.setNeighborhood(addressDto.getNeighborhood());
+        addressEntity.setCountry(addressDto.getCountry());
 
         addressRepository.save(addressEntity);
 
@@ -68,6 +72,6 @@ public class IAddressServiceImpl implements IAddressService {
             return true;
         }
 
-        return false;
+        throw new NotFoundException("Address not found for deleting");
     }
 }
