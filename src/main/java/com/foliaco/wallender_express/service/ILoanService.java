@@ -40,7 +40,7 @@ public interface ILoanService {
     void deleteLoanById(Integer id);
 
     /**
-     * Devuelve todos los préstamos activos.
+     * Devuelve todos los préstamos activos, aquellos donde el saldo pendiente es mayor que 0.
      *
      * @return Listado completo de préstamos activos.
     */
@@ -52,7 +52,7 @@ public interface ILoanService {
      * @param borrowerIdCard cedula del cliente.
      * @return Historial completo de préstamos del cliente.
      */
-    List<LoanDto> getExpiredLoans(String borrowerIdCard);
+    List<LoanDto> getExpiredLoansByBorrowerIdCard(String borrowerIdCard);
 
     /**
      * Devuelve todos los préstamos activos asociados a un cliente.
