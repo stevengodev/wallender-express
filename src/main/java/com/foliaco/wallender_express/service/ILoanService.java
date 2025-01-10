@@ -11,7 +11,7 @@ public interface ILoanService {
      * Devuelve un prestamo por su id
      *
      * @param id
-     * @return Prestamo
+     * @return {@code Optional<LoanDto>}
      */
     Optional<LoanDto> getLoanById(Integer id);
 
@@ -28,9 +28,9 @@ public interface ILoanService {
      *
      * @param id
      * @param loanDto
-     * @return Prestamos actualizado
+     * @return {@code LoanDto}
      */
-    Optional<LoanDto> updateLoan(Integer id, LoanDto loanDto);
+    LoanDto updateLoan(Integer id, LoanDto loanDto);
 
     /**
      * Elimina un préstamo por su id
@@ -62,5 +62,12 @@ public interface ILoanService {
     */
     List<LoanDto> getActiveLoansByBorrowerIdCard(String borrowerIdCard);
 
+    /**
+     * Devuelve todos los préstamos activos que están pendientes de pago para un prestamista.
+     *
+     * @param lenderIdCard cedula del prestamista.
+     * @return Listado completo de préstamos activos pendientes de pago para el prestamista.
+     */
+    List<LoanDto> getActiveLoansByLenderIdCard(String lenderIdCard);
 
 }

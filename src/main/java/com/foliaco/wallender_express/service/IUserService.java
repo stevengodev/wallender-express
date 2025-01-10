@@ -42,4 +42,17 @@ public interface IUserService {
      */
     void deleteUserByIdCard(String idCard);
 
+    /**
+     * Obtiene la cédula del prestatario por su id
+     * @param borrowerId
+     * @return Cédula del prestatario
+     */
+    String getBorrowerCedulaById(int borrowerId);
+
+    /**
+     * Obtiene la cédula del prestamista por su id
+     * @param lenderId
+     * @return Cédula del prestamista
+     */
+    String getLenderCedulaById(int lenderId);
 }
