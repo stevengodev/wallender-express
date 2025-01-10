@@ -16,7 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 @Slf4j
-public class IAddressServiceImpl implements IAddressService {
+public class AddressServiceImpl implements IAddressService {
 
     private ModelMapper modelMapper;
 

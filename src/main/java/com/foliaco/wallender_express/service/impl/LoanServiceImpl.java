@@ -7,6 +7,7 @@ import com.foliaco.wallender_express.mapper.ILoanMapper;
 import com.foliaco.wallender_express.repository.ILoanRepository;
 import com.foliaco.wallender_express.service.ILoanService;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @Service
-@Slf4j
+@Log4j2
 public class LoanServiceImpl implements ILoanService {
 
     private ILoanRepository loanRepository;
@@ -101,6 +102,15 @@ public class LoanServiceImpl implements ILoanService {
     public List<LoanDto> getActiveLoansByBorrowerIdCard(String borrowerIdCard) {
         log.info("getActiveLoansByBorrowerIdCard: {}", borrowerIdCard);
         return loanRepository.getActiveLoansByBorrowerIdCard(borrowerIdCard).stream()
+                .map( loanMapper::toLoandDto )
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<LoanDto> getActiveLoansByLenderIdCard(String lenderIdCard) {
+        log.info("getActiveLoansByLenderIdCard: {}", lenderIdCard);
+        return loanRepository.getActiveLoansByLenderIdCard(lenderIdCard).stream()
                 .map( loanMapper::toLoandDto )
                 .toList();
     }
